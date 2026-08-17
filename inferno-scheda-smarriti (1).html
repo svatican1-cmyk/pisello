@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scheda dello Smarrito — Inferno: Dante's Guide to Hell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;600;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F3E8; --paper2:#EFE8D5; --ink:#211B14; --ink-soft:#6B5F4C;
+  --gold:#C2A24C; --gold-deep:#9A7B2E; --maroon:#5E1F1B; --ice:#3E6E8E;
+  --line:rgba(33,27,20,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#DCD3BC;color:var(--ink);font-family:'EB Garamond',Georgia,serif;padding:14px;
+  background-image:radial-gradient(900px 400px at 50% 0,rgba(194,162,76,.18),transparent 65%)}
+.page{max-width:1080px;margin:0 auto;background:var(--paper);border:2px solid var(--ink);outline:6px double var(--gold-deep);outline-offset:-10px;padding:26px 22px 30px}
+h1,h2,h3,h4,h5{font-family:'Grenze Gotisch',serif}
+input,select,textarea{font-family:'EB Garamond',serif;color:var(--ink);background:transparent;border:none;border-bottom:1px solid var(--line);font-size:1rem;padding:2px 4px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);background:rgba(194,162,76,.08)}
+input[type=number]{width:56px;text-align:center}
+select{border:1px solid var(--line);border-radius:4px;background:var(--paper2)}
+textarea{width:100%;border:1px solid var(--line);border-radius:6px;min-height:100px;padding:8px;background:rgba(255,255,255,.4);resize:vertical;line-height:1.4}
+
+.masthead{text-align:center;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:16px}
+.masthead h1{font-size:3rem;font-weight:800;letter-spacing:.12em;color:var(--maroon);line-height:1}
+.masthead .sub{font-family:'Grenze Gotisch',serif;letter-spacing:.35em;font-size:.85rem;color:var(--ink-soft);text-transform:uppercase}
+.head-grid{display:grid;grid-template-columns:1.1fr 1.1fr .9fr .7fr;gap:14px;margin-top:14px;text-align:left;align-items:end}
+@media(max-width:900px){.head-grid{grid-template-columns:1fr 1fr}}
+.hfield label{display:block;font-family:'Grenze Gotisch',serif;font-size:.85rem;color:var(--ink-soft)}
+.hfield input,.hfield select{width:100%;font-size:1.02rem}
+.lvl-ctrl{display:flex;align-items:center;gap:6px}
+.lvl-ctrl button{width:30px;height:30px;border:1px solid var(--ink);background:var(--paper2);border-radius:6px;font-family:'Grenze Gotisch',serif;font-size:1.1rem;cursor:pointer}
+.lvl-ctrl b{font-family:'Grenze Gotisch',serif;font-size:1.6rem;min-width:40px;text-align:center}
+.sin-banner{margin-top:12px;background:var(--maroon);color:var(--paper);font-family:'Grenze Gotisch',serif;letter-spacing:.08em;padding:8px 12px;font-size:.95rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.sin-banner b{color:var(--gold)}
+.motto{font-style:italic;text-align:center;color:var(--ink-soft);font-size:.92rem;margin-top:8px}
+
+.cols{display:grid;grid-template-columns:230px 1fr 300px;gap:16px}
+@media(max-width:900px){.cols{grid-template-columns:1fr}.masthead h1{font-size:2.2rem}}
+.panel{border:1.5px solid var(--ink);padding:12px;position:relative;background:linear-gradient(180deg,rgba(255,255,255,.35),transparent);margin-bottom:16px}
+.panel::before{content:"";position:absolute;inset:3px;border:1px solid var(--gold);pointer-events:none;opacity:.6}
+.panel h3{font-size:1.15rem;letter-spacing:.06em;text-align:center;color:var(--maroon);border-bottom:1px solid var(--gold);padding-bottom:4px;margin-bottom:10px}
+
+.abil{display:flex;flex-direction:column;gap:10px}
+.arc{border:1.5px solid var(--ink);border-radius:60px 60px 8px 8px;padding:10px 6px 8px;text-align:center;background:var(--paper2)}
+.arc label{font-family:'Grenze Gotisch',serif;font-size:.9rem;display:block;color:var(--ink-soft)}
+.arc input{font-size:1.5rem;font-weight:600;width:64px;text-align:center;border-bottom:none;font-family:'Grenze Gotisch',serif}
+.arc .mod{display:inline-block;min-width:44px;border:1px solid var(--ink);border-radius:20px;background:var(--paper);font-weight:600;font-size:1rem;padding:1px 8px;margin-top:2px}
+
+.combat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:900px){.combat-row{grid-template-columns:repeat(2,1fr)}}
+.badge{border:1.5px solid var(--ink);border-radius:50% 50% 8px 8px/40% 40% 8px 8px;text-align:center;padding:10px 4px;background:var(--paper2)}
+.badge b{font-family:'Grenze Gotisch',serif;font-size:1.45rem;display:block}
+.badge input{font-family:'Grenze Gotisch',serif;font-size:1.45rem;text-align:center;width:70px;border-bottom:none;font-weight:600}
+.badge span{font-family:'Grenze Gotisch',serif;font-size:.72rem;color:var(--ink-soft);display:block;line-height:1.15}
+.ca-hint{grid-column:1/-1;font-size:.78rem;font-style:italic;color:var(--ink-soft);text-align:center;margin-top:-6px}
+
+.rosone-wrap{text-align:center;padding:6px 0 2px}
+.rosone{width:250px;height:250px;margin:0 auto;display:block}
+.rosone circle.pt{cursor:pointer;transition:fill .12s}
+.rosone-info{font-family:'Grenze Gotisch',serif;font-size:.95rem;margin-top:6px}
+.rosone-info b{color:var(--maroon);font-size:1.2rem}
+.small-note{font-size:.8rem;color:var(--ink-soft);font-style:italic;line-height:1.35;margin-top:6px}
+.insp{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;font-family:'Grenze Gotisch',serif}
+.insp input{width:20px;height:20px;accent-color:var(--maroon)}
+
+.plist{list-style:none;font-size:.94rem}
+.plist li{display:flex;align-items:center;gap:6px;padding:2.5px 0;border-bottom:1px dotted rgba(33,27,20,.2)}
+.plist li:last-child{border-bottom:none}
+.dot{width:12px;height:12px;border:1.5px solid var(--ink);border-radius:50%;flex:0 0 auto;cursor:pointer}
+.dot.on{background:var(--maroon)}
+.dot.exp{background:var(--gold-deep);box-shadow:0 0 0 2px var(--paper),0 0 0 3.5px var(--gold-deep)}
+.plist .val{min-width:34px;font-weight:600;text-align:right}
+.plist .sub{color:var(--ink-soft);font-size:.82rem}
+
+.emblema{border:1px solid var(--line);border-radius:8px;padding:10px;margin-bottom:10px;background:rgba(62,110,142,.05)}
+.emblema h4{font-size:1.05rem;color:var(--ice);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.emblema h4 select{font-size:.85rem;padding:2px 6px}
+.emblema p{font-size:.88rem;line-height:1.42;margin-top:4px}
+.emblema ul{margin:6px 0 0 16px;font-size:.86rem;line-height:1.42}
+.emblema li.locked{color:var(--ink-soft);opacity:.5}
+.emblema li.active::marker{color:var(--maroon)}
+.state-tag{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:12px;border:1px solid currentColor}
+.st-0{color:var(--ink-soft)}.st-1{color:var(--ice)}.st-2{color:var(--gold-deep)}.st-3{color:var(--maroon)}
+.emblema-note{font-size:.8rem;font-style:italic;color:var(--ink-soft);margin-bottom:10px}
+
+table.atk{width:100%;border-collapse:collapse;font-size:.92rem}
+table.atk th{font-family:'Grenze Gotisch',serif;font-weight:600;font-size:.8rem;color:var(--ink-soft);border-bottom:1px solid var(--ink);text-align:left;padding:2px 4px}
+table.atk td{padding:5px 4px;border-bottom:1px dotted rgba(33,27,20,.25)}
+table.atk td.num{font-weight:600;white-space:nowrap}
+table.atk .wnote{font-size:.76rem;color:var(--ink-soft)}
+
+details{border-bottom:1px dotted rgba(33,27,20,.25);padding:4px 0}
+details summary{cursor:pointer;font-weight:600;font-size:.95rem;list-style:none;display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+details summary::before{content:"✠";color:var(--gold-deep);font-size:.8rem}
+details p{font-size:.88rem;line-height:1.45;padding:4px 0 6px 18px;color:#372E22}
+.lvl-chip{font-size:.7rem;color:var(--paper);background:var(--maroon);border-radius:10px;padding:1px 7px;font-family:'Grenze Gotisch',serif}
+.base-feats{font-size:.9rem;line-height:1.5;padding:4px 0}
+.base-feats b{font-family:'Grenze Gotisch',serif;font-size:.78rem;color:var(--maroon)}
+
+.vv-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:900px){.vv-grid{grid-template-columns:1fr}}
+.vv-grid h5{color:var(--maroon);font-size:.95rem;margin-bottom:4px}
+.vv-grid select{width:100%;margin-bottom:6px}
+.vv-desc{font-size:.82rem;font-style:italic;color:var(--ink-soft);min-height:32px;line-height:1.35}
+
+.slot-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.slot-box{border:1px solid var(--ink);border-radius:8px;padding:6px 10px;text-align:center;background:var(--paper2)}
+.slot-box b{font-family:'Grenze Gotisch',serif;display:block;font-size:.85rem}
+.slot-pips{display:flex;gap:5px;justify-content:center;margin-top:4px;flex-wrap:wrap;max-width:120px}
+.pip{width:14px;height:14px;border:1.5px solid var(--ink);border-radius:50%;cursor:pointer}
+.pip.spent{background:var(--ink)}
+.spell-list{columns:2;column-gap:18px;font-size:.9rem}
+@media(max-width:700px){.spell-list{columns:1}}
+.spell-list label{display:flex;gap:6px;align-items:center;break-inside:avoid;padding:2px 0}
+.spell-list input[type=text]{flex:1}
+.spell-list input[type=checkbox]{accent-color:var(--maroon)}
+.spell-head{display:flex;gap:12px;flex-wrap:wrap;font-size:.92rem;margin-bottom:8px}
+.spell-head b{font-family:'Grenze Gotisch',serif}
+
+.footer-note{text-align:center;font-size:.78rem;color:var(--ink-soft);font-style:italic;margin-top:18px}
+.toolbar{position:fixed;bottom:16px;right:16px;display:flex;align-items:center;gap:8px;z-index:20;flex-wrap:wrap;justify-content:flex-end}
+.toolbar button,.tb-file{background:var(--paper2);color:var(--ink);border:1px solid var(--ink);border-radius:30px;font-family:'Grenze Gotisch',serif;letter-spacing:.05em;padding:8px 14px;cursor:pointer;font-size:.85rem;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.toolbar button:hover,.tb-file:hover{background:var(--gold);color:#241A0B}
+.toolbar .tb-main{background:var(--maroon);color:var(--paper);border-color:var(--maroon);padding:10px 18px;font-size:.95rem}
+.toolbar .tb-main:hover{background:#7a2a24;color:var(--paper)}
+.tb-file input{display:none}
+.flash{opacity:0;transition:opacity .2s;background:#4E6B3C;color:var(--paper);font-family:'Grenze Gotisch',serif;font-size:.8rem;letter-spacing:.06em;padding:6px 12px;border-radius:20px;pointer-events:none}
+.flash.show{opacity:1}
+@media print{.toolbar{display:none}body{background:#fff;padding:0}.page{outline:none;border:none}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <h1>INFERNO</h1>
+    <div class="sub">Dante's Guide to Hell · Scheda dello Smarrito</div>
+    <div class="head-grid">
+      <div class="hfield"><label>Nome Personaggio</label><input id="pname" placeholder="Il tuo nome smarrito…"></div>
+      <div class="hfield"><label>Archetipo</label><select id="arch-sel"></select></div>
+      <div class="hfield"><label>Allineamento</label><input id="palign" value="Neutrale"></div>
+      <div class="hfield"><label>Livello</label>
+        <div class="lvl-ctrl"><button onclick="chLvl(-1)">−</button><b id="lvl">12</b><button onclick="chLvl(1)">+</button></div>
+      </div>
+    </div>
+    <div class="sin-banner">
+      <span>Classe: <b id="b-classe">–</b></span>
+      <span>Peccato: <b id="b-peccato">–</b></span>
+      <span>Punizione: <b id="b-punizione">–</b></span>
+      <span>Competenza: <b id="b-prof">+4</b></span>
+    </div>
+    <p class="motto" id="b-motto"></p>
+  </div>
+
+  <div class="cols">
+    <!-- ===== SINISTRA ===== -->
+    <div>
+      <div class="panel"><h3>Caratteristiche</h3><div class="abil" id="abil"></div></div>
+      <div class="panel"><h3>Tiri Salvezza</h3><ul class="plist" id="saves"></ul><p class="small-note" id="saves-note"></p></div>
+      <div class="panel"><h3>Abilità</h3><ul class="plist" id="skills"></ul>
+        <p class="small-note">Anello pieno = competenza · dorato = raddoppiata. Percezione passiva: <b id="ppass">–</b></p></div>
+    </div>
+
+    <!-- ===== CENTRO ===== -->
+    <div>
+      <div class="combat-row">
+        <div class="badge"><b id="ca">–</b><span>Classe<br>Armatura</span></div>
+        <div class="badge"><b id="init">–</b><span>Iniziativa</span></div>
+        <div class="badge"><b id="speed">9 m</b><span>Velocità</span></div>
+        <div class="badge"><input id="hp" type="number" value="0"><span>Punti Ferita<br><span id="hd">–</span></span></div>
+        <div class="ca-hint" id="ca-hint"></div>
+      </div>
+
+      <div class="panel">
+        <h3>La Speranza dell'Altezza</h3>
+        <div class="rosone-wrap">
+          <svg class="rosone" id="rosone" viewBox="0 0 250 250" role="img" aria-label="Tracker dei Punti Speranza"></svg>
+          <div class="rosone-info">Punti Speranza: <b id="spn">33</b> / 33</div>
+          <p class="small-note">Tocca i petali per spendere o recuperare Speranza. Scintilla = 1d4 PS · Barlume = 1d6 PS. A 0 PS: TS contro Disperazione (1d20 ≥ metà livello, max 3 volte nel Viaggio).</p>
+          <div class="insp"><input type="checkbox" id="dinsp"><label for="dinsp">Divina Ispirazione</label></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Attacchi ed Emblemi Infernali</h3>
+        <p class="emblema-note" id="emb-note"></p>
+        <div id="emblemi"></div>
+        <table class="atk"><thead><tr><th>Arma / Attacco</th><th>Bonus att.</th><th>Danni / Tipo</th></tr></thead><tbody id="atk-body"></tbody></table>
+      </div>
+
+      <div class="panel" id="spell-panel">
+        <h3>Incantesimi</h3>
+        <div class="spell-head">
+          <span><b>Caratteristica:</b> <span id="spab">–</span></span>
+          <span><b>CD Tiro Salvezza:</b> <span id="spdc">–</span></span>
+          <span><b>Bonus di Attacco:</b> <span id="spatk">–</span></span>
+        </div>
+        <div class="slot-row" id="slots"></div>
+        <div class="spell-list" id="spells"></div>
+        <p class="small-note" id="spell-note"></p>
+      </div>
+
+      <div class="panel"><h3>Cronache Infernali</h3>
+        <textarea placeholder="Il tuo Viaggio, i cerchi attraversati, i patti stretti e traditi…"></textarea></div>
+    </div>
+
+    <!-- ===== DESTRA ===== -->
+    <div>
+      <div class="panel">
+        <h3>Virtù e Vizi</h3>
+        <div class="vv-grid">
+          <div><h5>Virtù I</h5><select class="vsel" data-out="v1"></select><div class="vv-desc" id="v1"></div></div>
+          <div><h5>Virtù II</h5><select class="vsel" data-out="v2"></select><div class="vv-desc" id="v2"></div></div>
+          <div><h5>Vizio I</h5><select class="zsel" data-out="z1"></select><div class="vv-desc" id="z1"></div></div>
+          <div><h5>Vizio II</h5><select class="zsel" data-out="z2"></select><div class="vv-desc" id="z2"></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Tratti dello Smarrito</h3>
+        <details><summary>Natura degli Smarriti</summary><p>Non ha bisogno di mangiare, bere, respirare o dormire: il riposo lungo si completa restando coscienti e immobili.</p></details>
+        <details><summary>Incremento caratteristiche</summary><p>+2 a un punteggio a scelta e +1 a un altro (già inclusi nei valori suggeriti).</p></details>
+        <details><summary>Passato Ottenebrato</summary><p>Ricordi sfumati, ma piena padronanza delle competenze basilari. Concede competenza in due abilità a scelta.</p></details>
+        <details><summary>Linguaggi</summary><p>Tutti quelli conosciuti in vita; nei regni oltremondani tutti parlano la Lingua Originaria.</p></details>
+        <details><summary>Cenere siete, cenere ritornerete</summary><p>Al terzo TS contro morte fallito il corpo diventa cenere e si perde 1 Scintilla di Speranza; se resta Speranza, dopo 1d4 round ci si riforma presso la Divina Fiamma più vicina con i benefici di un riposo lungo.</p></details>
+        <h3 style="margin-top:12px">Benedizioni della Carità</h3>
+        <div class="hfield" style="margin-bottom:6px"><label>Benedizione minore I</label><select id="bm1" style="width:100%"></select></div>
+        <div class="hfield" style="margin-bottom:6px"><label>Benedizione minore II</label><select id="bm2" style="width:100%"></select></div>
+        <div class="hfield"><label>Benedizione maggiore</label><select id="bM" style="width:100%"></select></div>
+        <p class="small-note" id="bdesc"></p>
+      </div>
+
+      <div class="panel">
+        <h3>Privilegi di Classe</h3>
+        <div class="base-feats" id="base-feats"></div>
+        <h3 style="margin-top:10px" id="arch-title">Archetipo</h3>
+        <div id="arch-feats"></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="footer-note">Scheda non ufficiale per uso personale — sintesi da Inferno: Dante's Guide to Hell (Acheron Games) e regole base 5e. Valori modificabili, calcoli automatici.</p>
+</div>
+<div class="toolbar">
+  <span class="flash" id="flash"></span>
+  <button onclick="exportJSON()" title="Scarica un file di backup">⤓ Esporta</button>
+  <label class="tb-file" title="Carica una scheda salvata">⤒ Importa<input type="file" accept=".json" onchange="importJSON(this)"></label>
+  <button onclick="reset()" title="Cancella il salvataggio">✕ Azzera</button>
+  <button class="tb-main" onclick="window.print()">🕯 Stampa / PDF</button>
+</div>
+
+<script>
+/* ============================================================
+   DATI — classi base 5e (sintesi)
+============================================================ */
+const CLASSI={
+ barbaro:{die:12,saves:["for","cos"],caster:null,
+  feats:{1:["Ira","Difesa senza armatura (10+Des+Cos)"],2:["Attacco irruento","Percezione del pericolo"],4:["ASI"],5:["Attacco extra","Movimento veloce"],7:["Istinto ferino"],8:["ASI"],9:["Critico brutale (1 dado)"],11:["Ira implacabile"],12:["ASI"],13:["Critico brutale (2 dadi)"],15:["Ira persistente"],16:["ASI"],17:["Critico brutale (3 dadi)"],18:["Forza indomabile"],19:["ASI"],20:["Campione primordiale"]}},
+ bardo:{die:8,saves:["des","car"],caster:"full",spab:"car",
+  feats:{1:["Incantesimi","Ispirazione bardica (d6)"],2:["Factotum","Canto riposante (d6)"],3:["Maestria"],4:["ASI"],5:["Fonte d'ispirazione (d8)"],6:["Controfascino"],8:["ASI"],9:["Canto riposante (d8)"],10:["Ispirazione bardica (d10)","Maestria","Segreti magici"],12:["ASI"],13:["Canto riposante (d10)"],14:["Segreti magici"],15:["Ispirazione bardica (d12)"],16:["ASI"],17:["Canto riposante (d12)"],18:["Segreti magici"],19:["ASI"],20:["Ispirazione superiore"]}},
+ chierico:{die:8,saves:["sag","car"],caster:"full",spab:"sag",
+  feats:{1:["Incantesimi"],2:["Incanalare divinità (1/riposo)"],4:["ASI"],5:["Distruggere non morti (GS 1/2)"],6:["Incanalare divinità (2/riposo)"],8:["ASI","Distruggere non morti (GS 1)"],10:["Intervento divino"],12:["ASI"],16:["ASI"],18:["Incanalare divinità (3/riposo)"],19:["ASI"],20:["Intervento divino migliorato"]}},
+ druido:{die:8,saves:["int","sag"],caster:"full",spab:"sag",
+  feats:{1:["Druidico","Incantesimi"],2:["Forma selvatica"],4:["ASI","Forma selvatica migliorata"],8:["ASI","Forma selvatica migliorata"],12:["ASI"],16:["ASI"],18:["Incantesimi bestiali","Corpo senza tempo"],19:["ASI"],20:["Arcidruido"]}},
+ guerriero:{die:10,saves:["for","cos"],caster:null,
+  feats:{1:["Stile di combattimento","Recupero energie"],2:["Azione impetuosa (1 uso)"],4:["ASI"],5:["Attacco extra"],6:["ASI"],8:["ASI"],9:["Indomito (1 uso)"],11:["Attacco extra (2)"],12:["ASI"],13:["Indomito (2 usi)"],14:["ASI"],16:["ASI"],17:["Azione impetuosa (2 usi)","Indomito (3 usi)"],19:["ASI"],20:["Attacco extra (3)"]}},
+ ladro:{die:8,saves:["des","int"],caster:null,
+  feats:{1:["Maestria","Attacco furtivo (1d6)","Gergo ladresco"],2:["Azione scaltra"],3:["Attacco furtivo (2d6)"],4:["ASI"],5:["Schivata prodigiosa","Attacco furtivo (3d6)"],6:["Maestria"],7:["Elusione","Attacco furtivo (4d6)"],8:["ASI"],9:["Attacco furtivo (5d6)"],10:["ASI"],11:["Talento affidabile","Attacco furtivo (6d6)"],12:["ASI"],13:["Attacco furtivo (7d6)"],14:["Percepire senza vedere"],15:["Mente sfuggente","Attacco furtivo (8d6)"],16:["ASI"],17:["Attacco furtivo (9d6)"],18:["Elusivo"],19:["ASI","Attacco furtivo (10d6)"],20:["Colpo di fortuna"]}},
+ mago:{die:6,saves:["int","sag"],caster:"full",spab:"int",
+  feats:{1:["Incantesimi","Recupero arcano"],4:["ASI"],8:["ASI"],12:["ASI"],16:["ASI"],18:["Maestria negli incantesimi"],19:["ASI"],20:["Incantesimi firma"]}},
+ monaco:{die:8,saves:["for","des"],caster:null,
+  feats:{1:["Difesa senza armatura (10+Des+Sag)","Arti marziali"],2:["Ki","Movimento senza armatura"],3:["Deviare proiettili"],4:["ASI","Caduta lenta"],5:["Attacco extra","Pugno stordente"],6:["Colpi di ki"],7:["Elusione","Mente lucida"],8:["ASI"],9:["Movimento senza armatura migliorato"],10:["Purezza del corpo"],12:["ASI"],13:["Lingua del sole e della luna"],14:["Anima di diamante"],15:["Corpo senza tempo"],16:["ASI"],18:["Corpo vuoto"],19:["ASI"],20:["Perfezione dell'essere"]}},
+ paladino:{die:10,saves:["sag","car"],caster:"half",spab:"car",
+  feats:{1:["Percezione del divino","Imposizione delle mani"],2:["Stile di combattimento","Incantesimi","Punizione divina"],3:["Salute divina"],4:["ASI"],5:["Attacco extra"],6:["Aura di protezione"],8:["ASI"],10:["Aura di coraggio"],11:["Punizione divina migliorata"],12:["ASI"],14:["Tocco purificatore"],16:["ASI"],18:["Aure migliorate (9 m)"],19:["ASI"]}},
+ ranger:{die:10,saves:["for","des"],caster:"half",spab:"sag",
+  feats:{1:["Nemico prescelto","Esploratore nato"],2:["Stile di combattimento","Incantesimi"],3:["Consapevolezza primitiva"],4:["ASI"],5:["Attacco extra"],6:["Nemico prescelto ed Esploratore migliorati"],8:["ASI","Piede fatato"],10:["Occultarsi in piena vista"],12:["ASI"],14:["Svanire"],16:["ASI"],18:["Sensi ferini"],19:["ASI"],20:["Sterminatore di nemici"]}},
+ stregone:{die:6,saves:["cos","car"],caster:"full",spab:"car",
+  feats:{1:["Incantesimi"],2:["Fonte di magia (punti stregoneria)"],3:["Metamagia (2 opzioni)"],4:["ASI"],8:["ASI"],10:["Metamagia (3ª opzione)"],12:["ASI"],16:["ASI"],17:["Metamagia (4ª opzione)"],19:["ASI"],20:["Restauro stregonesco"]}},
+ warlock:{die:8,saves:["sag","car"],caster:"pact",spab:"car",
+  feats:{1:["Magia del patto"],2:["Suppliche occulte"],3:["Dono del patto"],4:["ASI"],5:["Suppliche potenziate"],8:["ASI"],9:["Suppliche potenziate"],11:["Arcanum mistico (6°)"],12:["ASI"],13:["Arcanum mistico (7°)"],15:["Arcanum mistico (8°)"],16:["ASI"],17:["Arcanum mistico (9°)"],19:["ASI"],20:["Maestro occulto"]}}
+};
+
+const SLOT_FULL=[[2],[3],[4,2],[4,3],[4,3,2],[4,3,3],[4,3,3,1],[4,3,3,2],[4,3,3,3,1],[4,3,3,3,2],[4,3,3,3,2,1],[4,3,3,3,2,1],[4,3,3,3,2,1,1],[4,3,3,3,2,1,1],[4,3,3,3,2,1,1,1],[4,3,3,3,2,1,1,1],[4,3,3,3,2,1,1,1,1],[4,3,3,3,3,1,1,1,1],[4,3,3,3,3,2,1,1,1],[4,3,3,3,3,2,2,1,1]];
+const SLOT_HALF=[[],[2],[3],[3],[4,2],[4,2],[4,3],[4,3],[4,3,2],[4,3,2],[4,3,3],[4,3,3],[4,3,3,1],[4,3,3,1],[4,3,3,2],[4,3,3,2],[4,3,3,3,1],[4,3,3,3,1],[4,3,3,3,2],[4,3,3,3,2]];
+function pactSlots(l){return {n:l>=17?4:l>=11?3:l>=2?2:1, lv:l>=9?5:l>=7?4:l>=5?3:l>=3?2:1}}
+
+/* ============================================================
+   DATI — i 12 Archetipi Smarriti (sintesi dal manuale Inferno)
+   Emblemi: props = [Tormentato, Arso, Condannato]
+   Armi: emb = indice dell'emblema che dà +1/+2/+3
+============================================================ */
+const ARCH={
+ "Bestia":{cls:"barbaro",art:"La Bestia",peccato:"Ira",pena:"Quinto Cerchio (Stige)",
+  motto:"Coperto di fango, il volto celato da un cranio dorato: l'ira ti ha reso indegno di camminare a testa alta.",
+  stats:{for:20,des:14,cos:16,int:8,sag:12,car:10},
+  emblemi:[
+   {n:"Arma Brutale",d:"Arma da mischia magica sovradimensionata: 1d12 contundenti, due mani. In ira, sui critici tira un dado extra legato ai Danni dell'Ira (+2→1d4, +3→1d6, +4→1d8).",
+    p:["+1 ai tiri per colpire/danni; l'arma ottiene portata.","Bonus a +2; ottiene da lancio (6/18 m) e torna in mano a fine turno.","Bonus a +3; 1/turno puoi ripetere il tiro dei danni e scegliere il risultato."]},
+   {n:"Potenza Senza Controllo",d:"Resistenza ai danni non magici.",
+    p:["For o Cos +2 (anche il massimo).","Sui TS For/Cos per dimezzare i danni: nessun danno se superi.","I colpi critici subiti diventano colpi normali."]},
+   {n:"Fango",d:"Quando viene afferrata può usare la reazione per tentare di sfuggire alla lotta.",
+    p:["Resistenza ai danni da fuoco e da freddo.","Competenza nei TS su Destrezza.","+1 a CA e TS; fetore: chi inizia il turno entro 1,5 m → TS Cos CD 17 o avvelenato."]}],
+  archFeats:[[3,"Ira Accecante","In ira: immune ad affascinato/spaventato/trattenuto (effetti sospesi); vista cieca 9 m (vede anche invisibili); deve usare l'azione per attaccare la creatura più vicina."],
+   [6,"Furore Senza Controllo","Quando mette a segno un critico o porta una creatura a 0 PF, un attacco in mischia come azione bonus."],
+   [10,"Contraccolpo Implacabile","Le creature provocano attacco di opportunità quando entrano nella sua portata."],
+   [14,"Furia Illimitata","In ira, se scende a 0 PF senza morire sul colpo, resta a 1 PF ed è immune a tutti i danni fino al prossimo turno (1/riposo lungo)."]],
+  accogliere:"Nel suo turno spende 2 Punti Speranza per un'azione aggiuntiva.",
+  armi:[{n:"Arma Brutale",dado:"1d12",tipo:"contundenti",ab:"for",emb:0,note:"due mani (portata da Tormentato)"}],
+  ca:(s,e,l,p)=>({v:10+mod(s.des)+mod(s.cos)+(e[2]>=3?1:0),f:"Difesa senza armatura 10+Des+Cos"+(e[2]>=3?" +1 (Fango Cond.)":"")})},
+
+ "Giullare":{cls:"bardo",art:"Il Giullare",peccato:"Violenza contro i propri beni",pena:"Secondo Girone del Settimo Cerchio (selva dei suicidi)",
+  motto:"Campanelli che risuonano, un sorriso ebete e una maschera che non puoi togliere: hai scialacquato il dono più grande.",
+  stats:{for:8,des:16,cos:14,int:10,sag:12,car:20},
+  emblemi:[
+   {n:"Tocco di Follia",d:"Attacco speciale in mischia (competente, usa il mod. Carisma per colpire e danni): 1d6 danni psichici.",
+    p:["+1 ai tiri per colpire/danni.","Bonus a +2; danni 2d6.","Bonus a +3; danni 3d6."]},
+   {n:"Campanelli",d:"Strumento musicale; le componenti verbali diventano somatiche. Aura Distraente: entro 9 m (giullare incluso) svantaggio a Percezione (udito) e Furtività.",
+    p:["Se bersaglia con un incantesimo una creatura nell'Aura, può aggiungere i danni del Tocco di Follia.","Onda di Follia: azione, danni del Tocco a tutti nell'Aura, sé compreso (usi = competenza/riposo lungo).","Con Onda di Follia può spendere uno slot: +1d6 psichici per livello (max 9d6)."]},
+   {n:"Maschera",d:"Senza armatura né scudo: CA 10 + Des + Car.",
+    p:["+1 a CA e TS.","Azione: confusione al 5° livello (CD 16, 1/riposo lungo).","Se supera un TS contro un incantesimo a bersaglio singolo, con la reazione lo riflette sull'incantatore (1/riposo lungo)."]}],
+  archFeats:[[3,"Aura Caotica","Azione bonus + 1 uso di Ispirazione Bardica: fino al prossimo turno, chi è nell'Aura Distraente sottrae il dado di Ispirazione a un tiro (a scelta del giullare)."],
+   [3,"Riverbero di Dolore","Reazione quando viene colpito in mischia entro 3 m: TS Sag o 3d6 psichici (metà se superato). Usi = competenza/riposo lungo."],
+   [6,"Eco Incontenibile","Lancia risata incontenibile senza slot (usi = competenza/riposo lungo); con 1 uso di Ispirazione può bersagliare tutti nell'Aura."],
+   [14,"Vuoi Sapere Come Mi Sono Fatto Queste Cicatrici?","Chi lo colpisce con un attacco in mischia subisce 1d8 danni psichici."]],
+  accogliere:"Spende 2 Punti Speranza per recuperare tutti gli usi di Ispirazione Bardica.",
+  armi:[{n:"Tocco di Follia",dado:"1d6",tipo:"psichici",ab:"car",emb:0,note:"mischia; 2d6 da Arso, 3d6 da Condannato"}],
+  ca:(s,e)=>({v:10+mod(s.des)+mod(s.car)+(e[2]>=1?1:0),f:"Maschera 10+Des+Car"+(e[2]>=1?" +1 (Torm.)":"")})},
+
+ "Vicario":{cls:"chierico",art:"Il Vicario",peccato:"Ipocrisia",pena:"Sesta Bolgia dell'Ottavo Cerchio",
+  motto:"Una cappa dorata ma pesante come piombo, una fiaccola dalla fiamma vana: predichi bene e razzoli male.",
+  stats:{for:14,des:8,cos:16,int:10,sag:20,car:12},
+  emblemi:[
+   {n:"Manto dell'Ipocrisia",d:"Armatura magica: CA 16 (niente mod. Des), svantaggio a Furtività.",
+    p:["Niente più svantaggio a Furtività; +1 ai TS.","CA 17; +1 ai tiri per colpire con incantesimo e alle CD.","CA 18; se colpito in mischia, reazione: aura sacra su di sé (CD 17, 1/riposo lungo)."]},
+   {n:"Fiaccola delle Vanità",d:"Mazza magica; quando colpisce con la Fiaccola o infligge danni con un trucchetto: +1d4 radiosi extra.",
+    p:["+1 ai tiri per colpire/danni con la Fiaccola.","Bonus a +2; radiosi extra 2d4.","Bonus a +3; radiosi extra 3d4."]},
+   {n:"Verbo",d:"Amuleto (simbolo sacro). Azione: comando (CD 14), usi = competenza/riposo lungo.",
+    p:["Azione: compulsione (CD 15, 1/riposo lungo).","Azione: danza irresistibile (CD 16, 1/riposo lungo).","Azione: parola del potere stordire (CD 17, 1/riposo lungo)."]}],
+  archFeats:[[1,"Luce del Signore","Apprende il trucchetto luce."],
+   [1,"Personificazione del Dogma","Competenza (raddoppiata) in Inganno e Persuasione."],
+   [2,"Sermone (Incanalare Divinità)","Azione: gli umanoidi entro 9 m che lo vedono/odono → TS Sag o affascinati 1 minuto (finché non subiscono danni)."],
+   [6,"Parola Universale","Il Sermone funziona su qualunque tipo di creatura."],
+   [8,"Potenza Divina","Aggiunge il mod. Saggezza ai danni della Fiaccola e dei trucchetti."],
+   [17,"Parole di Fervore","Azione bonus: comanda le azioni delle creature affascinate dal Sermone."]],
+  accogliere:"Quando viene colpito in mischia, spende 2 PS per deviare l'attacco su un'altra creatura a portata.",
+  armi:[{n:"Fiaccola delle Vanità",dado:"1d6",tipo:"contundenti + 1d4 radiosi",ab:"for",emb:1,note:"radiosi extra: 2d4 Arso, 3d4 Cond."}],
+  ca:(s,e)=>({v:e[0]>=3?18:e[0]>=2?17:16,f:"Manto dell'Ipocrisia (armatura fissa, niente Des)"})},
+
+ "Pagano":{cls:"druido",art:"Il Pagano",peccato:"Senza battesimo",pena:"Primo Cerchio (Limbo)",
+  motto:"Vesti argentee e miti antichi: hai vissuto nel giusto, ma fuori dalla vera luce.",
+  stats:{for:8,des:14,cos:16,int:12,sag:20,car:10},
+  emblemi:[
+   {n:"Anfora del Mito",d:"Azione: evoca spiriti epici per 1 ora (1/riposo lungo). Base — Amazzonomachia: due esploratori.",
+    p:["Tauromachia: evoca un minotauro.","Centauromachia: evoca un centauro infernale.","Canto dell'Eroe: evoca un gladiatore con armi magiche."]},
+   {n:"Pastorale",d:"Bastone ferrato magico, focus da incantatore; gli attacchi in forma bestiale sono magici.",
+    p:["+1 ai tiri per colpire/danni col Pastorale e in forma bestiale.","Bonus a +2.","Bonus a +3."]},
+   {n:"Abito Argenteo",d:"Senza armatura né scudo: CA 10 + Des + Sag.",
+    p:["Le mostruosità che lo attaccano → TS Sag o devono cambiare bersaglio.","Reazione su tiro fallito: aggiunge il mod. Sag al risultato (usi = competenza/riposo lungo).","Resistenza a un tipo di danno a scelta + Assorbimento (reazione: immunità e cura metà danni, 1/riposo lungo)."]}],
+  archFeats:[[2,"Reazione Selvatica","Quando subisce danni può usare la reazione per attivare Forma Selvatica."],
+   [2,"Forma Guardiana","Forme bestiali infernali: 2° Lonza della Selva Oscura, 6° Minotauro, 10° Furia, 14° Medusa."],
+   [6,"Forza dei Guardiani Infernali","Le forme hanno PF extra (5 + 2/livello) e usano la CD degli incantesimi del pagano."],
+   [10,"Castigo","In Forma Selvatica, quando colpisce in mischia può spendere uno slot: +1d8 danni per livello dello slot (max 5d8)."],
+   [14,"Furore della Forma Selvatica","Se sta per scendere a 0 PF, reazione: si trasforma senza spendere usi e infligge 2d8+Sag danni entro 9 m (1/riposo lungo)."]],
+  accogliere:"Spende 2 PS per usare Forma Selvatica senza consumare un utilizzo.",
+  armi:[{n:"Pastorale",dado:"1d6",tipo:"contundenti",ab:"sag",emb:1,note:"come bastone ferrato; il bonus vale anche in forma bestiale"}],
+  ca:(s)=>({v:10+mod(s.des)+mod(s.sag),f:"Abito Argenteo 10+Des+Sag"})},
+
+ "Tiranno":{cls:"guerriero",art:"Il Tiranno",peccato:"Violenza contro il prossimo",pena:"Primo Girone del Settimo Cerchio (Flegetonte)",
+  motto:"Un teschio incoronato e un mantello che stilla sangue: il potere terreno è caduco, la giustizia eterna.",
+  stats:{for:20,des:10,cos:16,int:8,sag:12,car:14},
+  emblemi:[
+   {n:"Teschio Incoronato",d:"Le creature entro 3 m subiscono svantaggio ai TS contro lo spavento.",
+    p:["Azione: paura (CD 15, 1/riposo breve o lungo).","Azione: blocca mostri (CD 16, 1/riposo lungo).","Azione: dominare mostri (CD 17, 1/riposo lungo)."]},
+   {n:"Mantello Rosso Sangue",d:"Armatura magica: CA 16 (niente mod. Des), svantaggio a Furtività.",
+    p:["Niente più svantaggio a Furtività; +1 ai TS.","Resistenza al fuoco (immunità se già resistente).","Reazione: attacco in mischia contro chi lo danneggia entro 1,5 m."]},
+   {n:"Fardello",d:"Arma da mischia magica a due mani, sempre in pugno. Difensiva: 1d8 taglienti, +2 CA (conta come scudo). Offensiva: 2d6 taglienti.",
+    p:["+1 ai tiri per colpire/danni.","+2; Difensiva: può spostare il bonus sulla CA. Offensiva: il colpito non recupera PF per 1 min (TS Cos CD 16 a fine turno).","+3 ai tiri per colpire/danni."]}],
+  archFeats:[[3,"Sangue Chiama Sangue","Dadi Sangue (d8): ne ottiene 1 a fine turno quando colpisce col Fardello; può spenderne fino a metà competenza per aggiungerli ai danni. Max = competenza; si perdono al riposo. Finché ne possiede almeno 1, i tiri per colpirlo hanno vantaggio."],
+   [7,"Critico di Sangue","Un Dado Sangue extra sui critici col Fardello."],
+   [10,"Dadi Sangue Migliorati","I Dadi Sangue diventano d10 (d12 al 18°)."],
+   [15,"Recupero Sanguinolento","Con Recupero Energie può spendere Dadi Sangue e recuperare PF pari al tiro."]],
+  accogliere:"Spende 2 PS per un attacco col Fardello come azione bonus.",
+  armi:[{n:"Fardello (difensivo)",dado:"1d8",tipo:"taglienti · +2 CA",ab:"for",emb:2,note:"conta come scudo"},
+        {n:"Fardello (offensivo)",dado:"2d6",tipo:"taglienti",ab:"for",emb:2,note:"il colpito non recupera PF (da Arso)"}],
+  ca:(s,e)=>({v:16,f:"Mantello Rosso Sangue (armatura fissa; +2 col Fardello difensivo)"})},
+
+ "Serpe":{cls:"ladro",art:"La Serpe",peccato:"Furto",pena:"Settima Bolgia dell'Ottavo Cerchio",
+  motto:"Bendata come un'appestata, due serpenti d'oro avvinti ai polsi: hai raccolto senza mai seminare.",
+  stats:{for:8,des:20,cos:14,int:14,sag:10,car:12},
+  emblemi:[
+   {n:"Aspidi d'Oro",d:"Due armi da mischia magiche: 1d4 perforanti, accurate, portata, leggere; +1d6 veleno extra quando colpiscono.",
+    p:["+1 ai tiri per colpire/danni.","+2; veleno extra 2d6.","+3; con un 20 naturale: 14 danni da veleno e TS Cos CD 17 o avvelenato 1 min."]},
+   {n:"Sguardo Ipnotico",d:"Azione: suggestione (CD 14, 1/riposo lungo).",
+    p:["Azione: dominare persone (CD 15, 1/riposo lungo).","Azione: suggestione di massa (CD 16, 1/riposo lungo).","Azione: blocca mostri a volontà (CD 17; sulla stessa creatura 1/riposo lungo)."]},
+   {n:"Forma Strisciante",d:"CA base 12 + Des. Azione: metamorfosi su di sé in serpente velenoso gigante (mantiene Int/Sag/Car, 1/riposo breve o lungo).",
+    p:["Può trasformarsi anche in sciame di serpenti velenosi.","CA base 13 + Des; le forme hanno PF extra (5 + 1/livello).","Azione: si scinde in un duplicato con metà PF (1/riposo lungo)."]}],
+  archFeats:[[3,"Serpe Compagna","Trova famiglio come rituale senza componenti (solo serpente velenoso); se il famiglio muore, azione bonus per farlo riapparire (1/riposo lungo)."],
+   [3,"Estremo Furto","Quando colpisce con Attacco Furtivo, reazione: PF temporanei pari ai danni inflitti, ma subisce il veleno degli aspidi."],
+   [9,"Sempre Sveglia","Non può essere sorpresa da cosciente; attacchi di opportunità anche contro chi si Disimpegna."],
+   [13,"Reattiva","Una reazione extra per gli attacchi di opportunità; provoca opportunità anche a chi entra nella sua portata."],
+   [17,"Furto Vitale","Reazione quando una creatura muore entro 9 m: recupera PF pari ai dadi dell'Attacco Furtivo (usi = metà competenza/riposo lungo)."]],
+  accogliere:"Al primo attacco del turno spende 2 PS: per quel turno chi subisce i suoi danni da veleno è anche avvelenato.",
+  armi:[{n:"Aspidi d'Oro",dado:"1d4",tipo:"perforanti + 1d6 veleno",ab:"des",emb:0,note:"accurata, portata, leggera; veleno 2d6 da Arso"}],
+  ca:(s,e)=>({v:(e[2]>=2?13:12)+mod(s.des),f:"Forma Strisciante "+(e[2]>=2?"13":"12")+"+Des"})},
+
+ "Illuminato":{cls:"mago",art:"L'Illuminato",peccato:"Avarizia",pena:"Quarto Cerchio",
+  motto:"Gemme preziose che dopo la morte saranno solo un masso da spingere in eterno: la conoscenza senza luce è cupidigia.",
+  stats:{for:8,des:14,cos:16,int:20,sag:12,car:10},
+  emblemi:[
+   {n:"Irriconoscibile",d:"Vantaggio a Inganno e Intuizione; svantaggio ad Acrobazia e Atletica.",
+    p:["Azione: camuffare se stesso a volontà.","Competenza nei TS su Costituzione.","Azione: diventa invisibile finché non attacca o lancia incantesimi."]},
+   {n:"Gemme della Conoscenza",d:"Quando lancia un incantesimo da 1 azione può renderlo azione bonus (1/riposo lungo).",
+    p:["Un incantesimo extra (di qualsiasi classe) nel libro, lanciabile 1/riposo lungo senza slot né componenti.","CD e bonus di attacco degli incantesimi +2.","Un ulteriore incantesimo extra come sopra (1/riposo lungo)."]},
+   {n:"Pugno Chiuso",d:"Libro e bastone sempre in mano: bastone ferrato magico, focus; niente componenti somatiche; Recupero Arcano a ogni riposo breve.",
+    p:["+1 col bastone; un incantesimo gratis nel libro a ogni livello.","+2 col bastone; telecinesi (usi = competenza/riposo lungo).","+3; colpendo col bastone può spendere uno slot: +1d6 danni da forza per livello (max 9d6)."]}],
+  archFeats:[[2,"Vesti della Cupidigia","CA base 12 + bonus di competenza."],
+   [2,"Gemme della Conoscenza (privilegio)","Aggiunge il livello del suo slot disponibile più alto a un tiro per i danni di un incantesimo."],
+   [6,"Preparazione Versatile","Azione: cambia incantesimi preparati (fino a competenza cambi/riposo lungo)."],
+   [10,"Sete Inestinguibile","Reazione contro un incantesimo ≤5° che bersaglia solo lui: lo assorbe e recupera slot di pari livello totale (1/riposo lungo)."],
+   [14,"Difesa Sapiente","Bonus ai TS pari a ⅓ dello slot più alto; vantaggio e resistenza contro incantesimi se ha uno slot pari o superiore."]],
+  accogliere:"Quando lancia un incantesimo con slot, spende 2 PS per lanciarlo senza consumare lo slot.",
+  armi:[{n:"Bastone (Pugno Chiuso)",dado:"1d6",tipo:"contundenti",ab:"for",emb:2,note:"bastone ferrato magico"}],
+  ca:(s,e,l,p)=>({v:12+p,f:"Vesti della Cupidigia 12 + competenza (dal 2° livello)"})},
+
+ "Schiavo":{cls:"monaco",art:"Lo Schiavo",peccato:"Ignavia",pena:"Antinferno",
+  motto:"Catene ai polsi e nugoli di insetti: non hai mai scelto, e ora l'unica scelta è il Viaggio.",
+  stats:{for:10,des:18,cos:14,int:10,sag:18,car:8},
+  emblemi:[
+   {n:"Catene",d:"Attacco con incantesimo in mischia con portata (usa il mod. Costituzione per colpire e danni): danni contundenti, dado = Arti Marziali del monaco.",
+    p:["+1 ai tiri per colpire/danni.","+2; Sferzata: azione, entro 3 m TS Des CD 16 o 2d8 contundenti (metà se superato).","+3; Sferzata 3d8, CD 17."]},
+   {n:"Ignavia",d:"Svantaggio all'iniziativa e alle azioni del primo turno. Colpo Schierato: 1/turno +4 danni a una creatura già colpita da un alleato dall'ultimo turno.",
+    p:["Colpo Schierato: 8 danni.","Colpo Schierato: 12 danni.","Colpo Schierato: 16 danni."]},
+   {n:"Infestazione di Insetti",d:"Azione: richiama uno sciame di vespe alleato per 1 ora (1/riposo lungo).",
+    p:["Vantaggio ai TS su Costituzione.","Azione: piaga degli insetti (CD 16, 1/riposo lungo).","Chi lo attacca sottrae 1d4 al tiro per colpire (finché non subisce danni)."]}],
+  archFeats:[[3,"Catene di Schiavitù","Azione bonus + 1 ki: PF temporanei pari a competenza + Sag; colpendo con le Catene può spendere 1 ki per afferrare (taglia Media, Grande dal 6°, Enorme dal 17°)."],
+   [6,"Catene di Schiavitù Migliorate","Azione bonus + 2 ki: la creatura afferrata è trattenuta."],
+   [11,"Catene Inflessibili","Le Catene infliggono danni extra pari al mod. Cos; dopo un attacco con le Catene, 3 ki per un altro attacco come azione bonus."],
+   [17,"Maestro delle Catene","Azione bonus + 3 ki: la creatura afferrata è paralizzata (TS Cos a fine turno); reazione per attaccare chi entra a portata."]],
+  accogliere:"Quando subisce danni, spende 2 PS: recupera 2d8 + 2×livello PF ed è incapacitato (con resistenza a tutti i danni) fino alla fine del turno successivo.",
+  armi:[{n:"Catene",dado:"arti marziali",tipo:"contundenti",ab:"cos",emb:0,note:"portata; dado 1d4→1d10 col livello"}],
+  ca:(s)=>({v:10+mod(s.des)+mod(s.sag),f:"Difesa senza armatura 10+Des+Sag"})},
+
+ "Santo":{cls:"paladino",art:"Il Santo",peccato:"Violenza contro Dio",pena:"Terzo Girone del Settimo Cerchio (sabbie ardenti)",
+  motto:"Stendardo, scudo e un'aureola d'argento: hai infranto la legge del Signore con la scusa di difenderla.",
+  stats:{for:18,des:10,cos:14,int:8,sag:10,car:18},
+  emblemi:[
+   {n:"Stendardo e Scudo",d:"Lancia magica + scudo magico. Il santo e gli alleati entro 9 m sono sotto benedizione finché lo Stendardo è puro; colpire lo macchia (si purifica con un rituale di 1 ora, anche in riposo breve). Focus da incantatore.",
+    p:["+1 ai tiri per colpire/danni con lo Stendardo.","+2; contro immondi e non morti +1d10 radiosi.","+3; radiosi extra 2d10; sui TS Des per dimezzare: nessun danno se supera (reazione)."]},
+   {n:"Aureola d'Argento",d:"Armatura magica: CA 16 (niente mod. Des).",
+    p:["CA 17; +1 ai tiri per colpire con incantesimo.","Vantaggio ai TS contro incantesimi; bonus a +2.","CA 18; aura: alleati entro 6 m con vantaggio ai TS contro la magia."]},
+   {n:"Sguardo Velato",d:"Vista cieca 9 m (cieco oltre); vede gli invisibili nel raggio. Ottiene il trucchetto guida.",
+    p:["Azione: chiaroveggenza (usi = competenza/riposo lungo).","Vantaggio a iniziativa e Percezione.","Azione: impone obbedienza entro 9 m — TS Sag o affascinato 1 ora (1/riposo breve o lungo)."]}],
+  archFeats:[[3,"Sia Fatta la Mia Volontà (Incanalare)","Azione bonus: una creatura entro 9 m → TS Sag (svantaggio per immondi/non morti) o spaventata 1 min, velocità 0, attacchi contro di lei con vantaggio."],
+   [3,"Punire il Malvagio e Lenire il Giusto (Incanalare)","Dopo una Punizione Divina, azione bonus: creature entro 9 m ottengono PF temporanei pari ai danni radiosi extra."],
+   [7,"Sorriso di Pace","Quando cura con un incantesimo di 1°+, il santo o un alleato entro 9 m recupera 1d8 + mod. Car PF."],
+   [15,"Protetto dal Divino","Sempre sotto santuario (CD 8+comp.+Car), finché lo Stendardo non è macchiato."],
+   [20,"Araldo della Furia","Per 1 minuto: aura di sdegno 9 m (effetto Sia Fatta la Mia Volontà), vantaggio ai TS contro magie di immondi/non morti, gli alleati nell'aura recuperano 10 PF a turno (1/riposo lungo)."]],
+  accogliere:"Quando colpisce con lo Stendardo, spende 2 PS per purificarlo immediatamente.",
+  armi:[{n:"Stendardo (lancia)",dado:"1d6",tipo:"perforanti",ab:"for",emb:0,note:"+1d10 radiosi vs immondi/non morti da Arso"}],
+  ca:(s,e)=>({v:(e[1]>=3?18:e[1]>=1?17:16)+2,f:"Aureola d'Argento + scudo (+2)"})},
+
+ "Esiliato":{cls:"ranger",art:"L'Esiliato",peccato:"Tradimento della Patria",pena:"Antenora — Seconda Zona del Nono Cerchio",
+  motto:"Pelle livida, una lanterna spenta e armi d'ossa dorate: nessuna fiamma può scaldare chi ha rinnegato i propri ideali.",
+  stats:{for:12,des:20,cos:14,int:10,sag:16,car:8},
+  emblemi:[
+   {n:"Gelido",d:"Velocità −1,5 m; CA base 12 + Des; resistenza ai danni da freddo.",
+    p:["CA base 13 + Des.","Assorbimento: reazione ai danni da freddo → immunità a quella fonte e cura metà danni (1/riposo lungo).","CA base 14 + Des; ogni colpo contro creature sorprese è un critico."]},
+   {n:"Lanterna Vuota",d:"Scurovisione 18 m (o +9 m); competenza in Furtività con bonus raddoppiato; focus da incantatore.",
+    p:["Azione: oscurità centrata sulla lanterna, vede al suo interno (1/riposo lungo).","Vantaggio a Percezione (vista); vede gli invisibili entro la scurovisione.","Vista pura entro la scurovisione."]},
+   {n:"Armamento d'Ossa",d:"Corna Nere (a distanza magica: 1d8 perforanti, 30/120, due mani, pesante, munizioni auto-generate) e Pugnali di Corno (coppia di pugnali magici).",
+    p:["+1 ai tiri per colpire/danni.","+2; le Corna Nere ignorano mezza e tre quarti di copertura.","+3; munizione del rancore: TS Cos CD 17 o 5d10 perforanti extra (metà se superato, 1/riposo lungo)."]}],
+  archFeats:[[3,"Alito di Antenora","Azione bonus + 1 slot: aura di gelo 6 m per 1 min (si spezza se ti muovi/perdi concentrazione). Chi vi inizia il turno: velocità dimezzata e 1d8 freddo; i tuoi attacchi: +1d8 freddo e −3 m di velocità al bersaglio. Usi = competenza/riposo breve o lungo."],
+   [7,"Brezza di Antenora","L'aura di gelo arriva a 9 metri."],
+   [11,"Sferza di Antenora","Alito senza slot; colpendo con un'arma può spendere uno slot: +1d8 freddo per livello (max 5d8)."],
+   [15,"Tormenta di Antenora","Aura a 12 m; reazione per imporre svantaggio ai tiri per colpirlo dall'interno dell'aura."]],
+  accogliere:"Quando colpisce con un'arma, spende 2 PS per intrappolare il bersaglio nel ghiaccio (trattenuto fino alla fine del suo prossimo turno).",
+  armi:[{n:"Corna Nere",dado:"1d8",tipo:"perforanti",ab:"des",emb:2,note:"30/120, due mani, pesante"},
+        {n:"Pugnali di Corno",dado:"1d4",tipo:"perforanti",ab:"des",emb:2,note:"coppia, leggeri"}],
+  ca:(s,e)=>({v:(e[0]>=3?14:e[0]>=1?13:12)+mod(s.des),f:"Gelido "+(e[0]>=3?"14":e[0]>=1?"13":"12")+"+Des"}),speed:-1.5},
+
+ "Eresiarca":{cls:"stregone",art:"L'Eresiarca",peccato:"Eresia",pena:"Sesto Cerchio (sepolcri infuocati)",
+  motto:"Lingue di fuoco etereo e pelle ustionata: la tua dottrina falsa arde già su di te.",
+  stats:{for:8,des:14,cos:16,int:10,sag:12,car:20},
+  emblemi:[
+   {n:"Fiamme",d:"Emette luce intensa 9 m + fioca 9 m.",
+    p:["I suoi incantesimi ignorano la resistenza al fuoco (l'immunità conta come resistenza).","Aggiunge il mod. Carisma a un tiro per i danni di ogni incantesimo da stregone.","Chi lo colpisce in mischia subisce 1d8 danni da fuoco."]},
+   {n:"Pelle Bruciata",d:"Resistenza a tutti i tipi di danno.",
+    p:["CA base 13 + Cos; +1 ai TS.","Assorbimento (fuoco): reazione → immunità a quella fonte e cura metà danni (1/riposo lungo).","CA base 14 + Cos; bonus ai TS +2."]},
+   {n:"Simbolo Eretico",d:"Apprende scudo (non conta nei conosciuti); focus da incantatore.",
+    p:["+1 ai tiri per colpire con incantesimo e alle CD.","Bonus a +2.","Reazione: trasforma un TS fallito in un successo (1/riposo lungo)."]}],
+  archFeats:[[1,"Fuoco Purificatore","I danni dei suoi incantesimi diventano da fuoco; può spendere 1 punto stregoneria per renderne metà necrotici. Ogni incantesimo di 1°+ gli costa 1 danno necrotico per livello (non riducibile)."],
+   [6,"Di Brace e Tormento","Azione bonus: subisce 1d4 necrotici per ottenere 1 punto stregoneria (usi = competenza/riposo lungo)."],
+   [14,"Preparazione a Dite","Azione bonus + 1 punto stregoneria: immunità al fuoco per 1 ora. Reazione quando subisce danni: lancia un incantesimo (1 azione, bersaglio singolo) su chi lo ha danneggiato (1/riposo breve o lungo)."],
+   [18,"Ascesa Infernale","Dopo un incantesimo di 1°+, azione bonus: vampate 9 m — chi entra o inizia il turno subisce fuoco pari al doppio del livello dell'incantesimo; 2 punti stregoneria per estendere."]],
+  accogliere:"Quando tira danni da fuoco, spende 2 PS per infliggere il massimo anziché tirare.",
+  armi:[{n:"Trucchetto (es. dardo di fuoco)",dado:"3d10",tipo:"fuoco (al 11°+)",ab:"car",emb:null,note:"usa il bonus di attacco degli incantesimi"}],
+  ca:(s,e)=>({v:e[1]>=3?14+mod(s.cos):e[1]>=1?13+mod(s.cos):10+mod(s.des),f:e[1]>=1?"Pelle Bruciata "+(e[1]>=3?"14":"13")+"+Cos":"10+Des (Pelle Bruciata base non modifica la CA)"})},
+
+ "Falso Profeta":{cls:"warlock",art:"Il Falso Profeta",peccato:"Seminatore di scisma",pena:"Nona Bolgia dell'Ottavo Cerchio",
+  motto:"Un teschio d'oro come maschera e una spada d'ossidiana: hai divulgato scismi e diviso le genti.",
+  stats:{for:8,des:14,cos:16,int:10,sag:12,car:20},
+  emblemi:[
+   {n:"Teschio d'Oro",d:"Armatura magica: CA 12 + Des.",
+    p:["+1 ai TS.","CA 13 + Des; resistenza a un tipo di danno a scelta (acido, freddo, fulmine, fuoco, necrotico, radioso o tuono).","+1 a tiri per colpire con incantesimo e CD; bonus ai TS +2."]},
+   {n:"Arma d'Ossidiana",d:"Spada lunga magica; può usare il mod. Carisma per colpire e danni. Ogni colpo messo a segno gli costa 1d4 danni necrotici (non riducibili).",
+    p:["+1 ai tiri per colpire/danni.","+2; chi è concentrato e subisce i suoi danni ha svantaggio al TS di concentrazione.","+3; può attaccare con quest'arma come azione bonus a ogni turno."]},
+   {n:"Scettro",d:"Aggiunge anatema ai conosciuti (gratis); lo lancia senza slot un numero di volte pari alla competenza (poi con slot). Focus da incantatore.",
+    p:["Carisma +2 (anche il massimo).","Azione: evoca il fuoco della discordia (elementale del fuoco, 1/riposo lungo).","Azione bonus: TS Int CD 17 o la creatura non distingue amici da nemici fino al tuo prossimo turno (usi = metà competenza/riposo lungo)."]}],
+  archFeats:[[1,"Cavaliere di Discordia","Apprende il trucchetto illusione minore."],
+   [1,"Maestro delle Arti Nere","Colpendo con un'arma: +mod. Car danni necrotici (usi = competenza/riposo lungo); può spendere uno slot da warlock: +1d8 necrotici per livello (max 5d8)."],
+   [1,"Lista Ampliata","Aggiunge alla lista warlock: comando, eroismo, calmare emozioni, punizione marchiante, guardiani spirituali, scagliare maledizione, compulsione, confusione, dominare persone, piaga degli insetti."],
+   [3,"Dono del Patto","Deve scegliere il Patto della Catena: famiglio in forma di diavolo infimo (statistiche dell'imp)."],
+   [6,"Attacco Extra","Due attacchi con l'azione di Attacco."],
+   [10,"Aura di Supremazia","Bonus alla CA pari al mod. Carisma."],
+   [14,"Maestro di Discordia","Quando lancia un incantesimo con l'azione, può attaccare con un'arma come azione bonus."]],
+  accogliere:"Quando un suo incantesimo impone un TS, spende 2 PS per infliggere svantaggio al primo TS di un bersaglio.",
+  armi:[{n:"Arma d'Ossidiana",dado:"1d8",tipo:"taglienti (+Car necrotici, Arti Nere)",ab:"car",emb:1,note:"ogni colpo ti costa 1d4 necrotici"}],
+  ca:(s,e,l)=>({v:(e[0]>=2?13:12)+mod(s.des)+(l>=10?mod(s.car):0),f:"Teschio d'Oro "+(e[0]>=2?"13":"12")+"+Des"+(l>=10?" + Car (Aura di Supremazia)":"")})}
+};
+
+const STATI=["Base","Tormentato","Arso","Condannato"];
+const STAT_KEYS=[["for","Forza"],["des","Destrezza"],["cos","Costituzione"],["int","Intelligenza"],["sag","Saggezza"],["car","Carisma"]];
+const mod=v=>Math.floor((v-10)/2), fm=v=>(v>=0?"+":"")+v;
+const profOf=l=>2+Math.floor((l-1)/4);
+function monkDie(l){return l>=17?"1d10":l>=11?"1d8":l>=5?"1d6":"1d4"}
+function embDefault(l){ // [e1,e2,e3] stati di default per fascia di livello
+  if(l>=17)return[3,3,2]; if(l>=13)return[3,2,1]; if(l>=9)return[2,1,0]; if(l>=5)return[1,0,0]; return[0,0,0];
+}
+function embHint(l){
+  if(l>=17)return"2 Condannati, 1 Arso"; if(l>=13)return"1 Condannato, 1 Arso, 1 Tormentato";
+  if(l>=9)return"1 Arso, 1 Tormentato, 1 base"; if(l>=5)return"1 Tormentato, 2 base"; return"tutti gli emblemi al livello base";
+}
+
+/* ============================ STATO ============================ */
+let A="Esiliato", LVL=12, embSt=[2,1,0], speranza=33;
+
+/* ============================ COSTRUZIONE UI ============================ */
+const archSel=document.getElementById('arch-sel');
+archSel.innerHTML=Object.keys(ARCH).map(k=>`<option ${k===A?'selected':''}>${k}</option>`).join('');
+archSel.addEventListener('change',()=>{A=archSel.value;loadArch()});
+
+const abilBox=document.getElementById('abil');
+abilBox.innerHTML=STAT_KEYS.map(([k,l])=>`
+  <div class="arc"><label>${l}</label>
+    <input id="a-${k}" type="number" min="1" max="30" value="10">
+    <div class="mod" id="m-${k}">+0</div></div>`).join('');
+STAT_KEYS.forEach(([k])=>document.getElementById('a-'+k).addEventListener('input',recalc));
+
+document.getElementById('saves').innerHTML=STAT_KEYS.map(([k,l])=>`
+  <li><span class="dot" data-save="${k}"></span><span class="val" id="sv-${k}">+0</span> ${l}</li>`).join('');
+document.querySelectorAll('[data-save]').forEach(d=>d.addEventListener('click',()=>{d.classList.toggle('on');recalc()}));
+
+const SKILLS=[["Acrobazia","des"],["Addestrare Animali","sag"],["Arcano","int"],["Atletica","for"],["Furtività","des"],["Indagare","int"],["Inganno","car"],["Intimidire","car"],["Intrattenere","car"],["Intuizione","sag"],["Medicina","sag"],["Natura","int"],["Percezione","sag"],["Persuasione","car"],["Rapidità di Mano","des"],["Religione","int"],["Sopravvivenza","sag"],["Storia","int"]];
+document.getElementById('skills').innerHTML=SKILLS.map(([n,a],i)=>`
+  <li><span class="dot" data-skill="${i}" title="clic: nessuna → competenza → raddoppiata"></span>
+  <span class="val" id="sk-${i}">+0</span> ${n} <span class="sub">(${a[0].toUpperCase()+a.slice(1,3)})</span></li>`).join('');
+document.querySelectorAll('[data-skill]').forEach(d=>d.addEventListener('click',()=>{
+  if(d.classList.contains('exp'))d.classList.remove('exp');
+  else if(d.classList.contains('on')){d.classList.remove('on');d.classList.add('exp')}
+  else d.classList.add('on');
+  recalc();
+}));
+
+/* rosone */
+const svg=document.getElementById('rosone');
+(function(){
+  const cx=125,cy=125;
+  let s=`<circle cx="${cx}" cy="${cy}" r="118" fill="none" stroke="#9A7B2E" stroke-width="2"/>
+         <circle cx="${cx}" cy="${cy}" r="108" fill="none" stroke="#211B14" stroke-width="1"/>
+         <circle cx="${cx}" cy="${cy}" r="30" fill="#F7F3E8" stroke="#5E1F1B" stroke-width="2"/>
+         <text x="${cx}" y="${cy-2}" text-anchor="middle" font-family="Grenze Gotisch" font-size="13" fill="#5E1F1B">Speranza</text>
+         <text x="${cx}" y="${cy+14}" text-anchor="middle" font-size="12">💀</text>`;
+  const rings=[[20,92,9],[13,58,8]]; let idx=0;
+  rings.forEach(([n,r,rad])=>{for(let i=0;i<n;i++){
+    const a=-Math.PI/2+i*2*Math.PI/n, x=cx+r*Math.cos(a), y=cy+r*Math.sin(a);
+    s+=`<circle class="pt" data-i="${idx}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rad}" stroke="#211B14" stroke-width="1.2"/>`;
+    s+=`<line x1="${(cx+32*Math.cos(a)).toFixed(1)}" y1="${(cy+32*Math.sin(a)).toFixed(1)}" x2="${(x-rad*Math.cos(a)).toFixed(1)}" y2="${(y-rad*Math.sin(a)).toFixed(1)}" stroke="#9A7B2E" stroke-width=".6" opacity=".5"/>`;
+    idx++;}});
+  svg.innerHTML=s;
+  svg.querySelectorAll('.pt').forEach(c=>c.addEventListener('click',()=>{
+    const i=+c.dataset.i; speranza=(i<speranza)?i:i+1; paintHope();
+  }));
+})();
+function paintHope(){
+  svg.querySelectorAll('.pt').forEach(c=>c.setAttribute('fill',+c.dataset.i<speranza?'#C2A24C':'#F7F3E8'));
+  document.getElementById('spn').textContent=speranza;
+}
+
+/* virtù/vizi + benedizioni */
+const VIRTU={"Sapienza":"Solo la conoscenza guidata dal Signore porta alla verità assoluta.","Temperanza":"Tiene sempre a bada i propri istinti tramite la ragione.","Fortezza":"Non si fa scoraggiare o intimidire di fronte alle difficoltà.","Giustizia":"Nessuno può porsi al di sopra delle leggi.","Prudenza":"Predilige soluzioni accomodanti ed evita pericoli e minacce.","Accettazione":"Non dubita che esista un piano divino per ogni cosa.","Fiducia":"Non dubita di essere ancora in tempo per redimersi.","Benevolenza":"Aiuta quando può i bisognosi, perfino i dannati.","Ragionevolezza":"Conoscere ogni dettaglio prima di agire è fondamentale.","Determinazione":"Coltiva coraggio e forza d'animo."};
+const VIZI={"Vanagloria":"Si ritiene al di sopra di tutti e si prende il merito di ogni cosa.","Indolenza":"Non si oppone alle ingiustizie e non aiuta compagni e bisognosi.","Concupiscenza":"Desideri smodati che non intende tenere a bada.","Rabbia":"Odio ingiustificato verso chi lo contrasta o contraddice.","Falsità":"Abituato a imbrogliare, raggirare e fingere, anche senza motivo.","Malizia":"Sempre pronto a pensar male, non si fida di nessuno.","Risentimento":"Rammarico e invidia per i successi degli altri.","Brama":"Ruba e accaparra beni pur non avendone bisogno.","Disprezzo":"Nulla ha valore, se non se stesso.","Insipienza":"Agisce d'impulso, senza dar valore a sapienza e ragionamento."};
+function bindVV(cls,data,defs){document.querySelectorAll(cls).forEach((sel,i)=>{
+  sel.innerHTML=Object.keys(data).map(k=>`<option>${k}</option>`).join('');sel.value=defs[i];
+  const out=()=>document.getElementById(sel.dataset.out).textContent=data[sel.value];
+  sel.addEventListener('change',out);out();});}
+bindVV('.vsel',VIRTU,["Determinazione","Fiducia"]);
+bindVV('.zsel',VIZI,["Falsità","Disprezzo"]);
+
+const BMIN={"Esperto":"Competenza in due abilità a scelta.","Scurovisione":"Vista 18 m in luce fioca come intensa e nell'oscurità come fioca.","Ponderato":"Disimpegno o Nascondersi come azione bonus.","Coraggioso":"Vantaggio ai TS contro lo spavento.","Giustizia Implacabile":"Azione bonus: muoviti verso una creatura nemica visibile.","Segreti Infusi":"Due trucchetti dalla lista di un archetipo.","Piè Veloce":"La velocità base aumenta a 12 m."};
+const BMAG={"Prudente":"Vantaggio ai tiri per l'iniziativa.","Robusto":"PF massimi +2, e +2 a ogni livello.","Inespugnabile":"Resistenza ai danni necrotici e radiosi.","Furia del Giusto":"Danni extra pari al doppio del livello, 1/riposo lungo.","Egida":"Ripeti un TS fallito, 1/riposo breve o lungo.","Peculiarità Benedetta":"Vantaggio a tutti i TS su una caratteristica a scelta."};
+function fillB(id,data,def){const s=document.getElementById(id);s.innerHTML=Object.keys(data).map(k=>`<option>${k}</option>`).join('');s.value=def;s.addEventListener('change',bdesc)}
+fillB('bm1',BMIN,"Ponderato");fillB('bm2',BMIN,"Scurovisione");fillB('bM',BMAG,"Egida");
+function bdesc(){
+  document.getElementById('bdesc').innerHTML=`<b>${bm1.value}:</b> ${BMIN[bm1.value]}<br><b>${bm2.value}:</b> ${BMIN[bm2.value]}<br><b>${bM.value}:</b> ${BMAG[bM.value]}`;
+  recalc();
+}
+
+/* ============================ CARICAMENTO ARCHETIPO ============================ */
+function chLvl(d){
+  const n=Math.min(20,Math.max(1,LVL+d));
+  if(n===LVL)return;
+  LVL=n;document.getElementById('lvl').textContent=LVL;
+  embSt=embDefault(LVL);renderEmblemi();suggestHP();recalc();
+}
+function loadArch(){
+  const a=ARCH[A];
+  Object.entries(a.stats).forEach(([k,v])=>document.getElementById('a-'+k).value=v);
+  // TS di classe
+  document.querySelectorAll('[data-save]').forEach(d=>d.classList.toggle('on',CLASSI[a.cls].saves.includes(d.dataset.save)));
+  document.getElementById('saves-note').textContent="Competenza della classe: "+CLASSI[a.cls].saves.map(k=>STAT_KEYS.find(s=>s[0]===k)[1]).join(" e ")+".";
+  embSt=embDefault(LVL);
+  renderEmblemi();suggestHP();recalc();
+}
+function suggestHP(){
+  const a=ARCH[A],c=CLASSI[a.cls];
+  const cos=mod(parseInt(document.getElementById('a-cos').value)||10);
+  document.getElementById('hp').value=Math.max(1,c.die+cos+(LVL-1)*(Math.floor(c.die/2)+1+cos));
+}
+
+function renderEmblemi(){
+  const a=ARCH[A];
+  document.getElementById('emb-note').innerHTML=`Progressione al ${LVL}° livello: <b>${embHint(LVL)}</b> (5°/9°/13°/17°). La scelta di quali emblemi far avanzare spetta a te.`;
+  document.getElementById('emblemi').innerHTML=a.emblemi.map((e,i)=>`
+    <div class="emblema">
+      <h4>${e.n}
+        <span style="display:flex;gap:6px;align-items:center">
+          <span class="state-tag" id="tag-${i}"></span>
+          <select data-emb="${i}">${STATI.map((s,j)=>`<option value="${j}" ${j===embSt[i]?'selected':''}>${s}</option>`).join('')}</select>
+        </span></h4>
+      <p>${e.d}</p>
+      <ul>${e.p.map((p,j)=>`<li id="pr-${i}-${j}"><b>${STATI[j+1]}.</b> ${p}</li>`).join('')}</ul>
+    </div>`).join('');
+  document.querySelectorAll('[data-emb]').forEach(s=>s.addEventListener('change',()=>{embSt[+s.dataset.emb]=+s.value;recalc()}));
+}
+
+/* ============================ RICALCOLO ============================ */
+function recalc(){
+  const a=ARCH[A],c=CLASSI[a.cls],p=profOf(LVL);
+  const s={};
+  STAT_KEYS.forEach(([k])=>{s[k]=parseInt(document.getElementById('a-'+k).value)||10;
+    document.getElementById('m-'+k).textContent=fm(mod(s[k]))});
+  document.getElementById('b-prof').textContent=fm(p);
+  document.getElementById('b-classe').textContent=`${A} (${a.cls[0].toUpperCase()+a.cls.slice(1)} Smarrito) · ${LVL}°`;
+  document.getElementById('b-peccato').textContent=a.peccato;
+  document.getElementById('b-punizione').textContent=a.pena;
+  document.getElementById('b-motto').textContent=a.motto;
+  // salvezze e abilità
+  STAT_KEYS.forEach(([k])=>{
+    const on=document.querySelector(`[data-save="${k}"]`).classList.contains('on');
+    document.getElementById('sv-'+k).textContent=fm(mod(s[k])+(on?p:0));
+  });
+  SKILLS.forEach(([n,ab],i)=>{
+    const d=document.querySelector(`[data-skill="${i}"]`);
+    const b=d.classList.contains('exp')?p*2:d.classList.contains('on')?p:0;
+    document.getElementById('sk-'+i).textContent=fm(mod(s[ab])+b);
+    if(n==="Percezione")document.getElementById('ppass').textContent=10+mod(s[ab])+b;
+  });
+  // CA, iniziativa, velocità
+  const ca=a.ca(s,embSt,LVL,p);
+  document.getElementById('ca').textContent=ca.v;
+  document.getElementById('ca-hint').textContent=ca.f;
+  document.getElementById('init').textContent=fm(mod(s.des));
+  let spd=9+(a.speed||0);
+  if(bm1.value==="Piè Veloce"||bm2.value==="Piè Veloce")spd+=3;
+  document.getElementById('speed').textContent=String(spd).replace('.',',')+" m";
+  document.getElementById('hd').textContent=`${LVL}d${c.die}`;
+  // tag e proprietà emblemi
+  a.emblemi.forEach((e,i)=>{
+    const t=document.getElementById('tag-'+i);
+    t.textContent=STATI[embSt[i]];t.className='state-tag st-'+embSt[i];
+    e.p.forEach((_,j)=>document.getElementById(`pr-${i}-${j}`).className=(j<embSt[i])?'active':'locked');
+  });
+  // attacchi
+  const atkBody=document.getElementById('atk-body');
+  const extra=[...atkBody.querySelectorAll('tr.extra input')].map(i=>i.value);
+  atkBody.innerHTML=a.armi.map(w=>{
+    const eb=w.emb!==null?embSt[w.emb]:0;
+    const abMod=w.ab?mod(s[w.ab]):0;
+    const atk=(w.emb!==null||w.ab)?fm(abMod+p+eb):"—";
+    const dado=w.dado==="arti marziali"?monkDie(LVL):w.dado;
+    const dmg=`${dado}${fm(abMod+eb)} ${w.tipo}`;
+    return `<tr><td>${w.n} <span class="wnote">${w.note}</span></td><td class="num">${atk}</td><td class="num">${dmg}</td></tr>`;
+  }).join('')+`<tr class="extra"><td><input placeholder="Altro attacco…" style="width:100%"></td><td class="num"><input style="width:50px"></td><td class="num"><input style="width:120px"></td></tr>`;
+  [...atkBody.querySelectorAll('tr.extra input')].forEach((i,j)=>{if(extra[j]!==undefined)i.value=extra[j]});
+  // incantesimi
+  const panel=document.getElementById('spell-panel');
+  if(!c.caster){panel.style.display='none'}
+  else{
+    panel.style.display='';
+    const abName=STAT_KEYS.find(x=>x[0]===c.spab)[1];
+    document.getElementById('spab').textContent=abName;
+    document.getElementById('spdc').textContent=8+p+mod(s[c.spab]);
+    document.getElementById('spatk').textContent=fm(p+mod(s[c.spab]));
+    let boxes="";
+    if(c.caster==="pact"){
+      const ps=pactSlots(LVL);
+      boxes=`<div class="slot-box"><b>Slot del Patto (liv. ${ps.lv})</b><div class="slot-pips">${Array.from({length:ps.n},(_,j)=>`<span class="pip" data-s="p${j}"></span>`).join('')}</div></div>`;
+      document.getElementById('spell-note').textContent="Gli slot del patto si recuperano con un riposo breve. Arcanum mistici indicati nei privilegi.";
+    } else {
+      const tab=(c.caster==="full"?SLOT_FULL:SLOT_HALF)[LVL-1];
+      boxes=tab.map((n,i)=>`<div class="slot-box"><b>${i+1}° Livello</b><div class="slot-pips">${Array.from({length:n},(_,j)=>`<span class="pip" data-s="${i}-${j}"></span>`).join('')}</div></div>`).join('');
+      document.getElementById('spell-note').textContent="Usa la lista incantesimi della tua classe riportata nel manuale Inferno (sostituisce quella base).";
+    }
+    const prevSpent=[...document.querySelectorAll('.pip')].map(px=>px.classList.contains('spent'));
+    document.getElementById('slots').innerHTML=boxes;
+    document.querySelectorAll('.pip').forEach((px,j)=>{
+      if(prevSpent[j])px.classList.add('spent');
+      px.addEventListener('click',()=>{px.classList.toggle('spent');save()});
+    });
+    if(!document.getElementById('spells').children.length){
+      document.getElementById('spells').innerHTML=Array.from({length:10},()=>`<label><input type="checkbox"><input type="text" placeholder="Incantesimo…"></label>`).join('');
+    }
+  }
+  // privilegi classe base
+  let rows=[];
+  for(let l=1;l<=LVL;l++)(c.feats[l]||[]).forEach(f=>rows.push(`<b>${l}°</b> ${f}`));
+  document.getElementById('base-feats').innerHTML=rows.join(' · ')||"—";
+  // privilegi archetipo
+  document.getElementById('arch-title').textContent=a.art;
+  const feats=a.archFeats.filter(([l])=>l<=LVL).map(([l,n,d])=>`
+    <details open><summary><span class="lvl-chip">${l}°</span> ${n}</summary><p>${d}</p></details>`).join('');
+  document.getElementById('arch-feats').innerHTML=feats+`
+    <details open><summary><span class="lvl-chip">◆</span> Accogliere il Peccato</summary><p>${a.accogliere}</p></details>
+    <details><summary><span class="lvl-chip">⚠</span> Luogo di punizione</summary><p>Nel luogo della tua pena (${a.pena}): svantaggio a prove, TS e tiri per colpire; costo in Punti Speranza raddoppiato; i Custodi Infernali si accaniscono su di te. Superata la prova: livello successivo, Divina Ispirazione e 1 Barlume di Speranza.</p></details>`;
+}
+
+/* ============================================================
+   PERSISTENZA — salvataggio automatico nel browser + JSON
+============================================================ */
+const KEY='inferno-scheda-smarrito';
+let ready=false, saveTimer=null;
+
+function collect(){
+  const els=[...document.querySelectorAll('.page input, .page select, .page textarea')];
+  return {v:1, arch:A, lvl:LVL, embSt:[...embSt], speranza,
+    fields:els.map(el=>el.type==='checkbox'?el.checked:el.value),
+    saves:[...document.querySelectorAll('[data-save]')].map(d=>d.classList.contains('on')),
+    skills:[...document.querySelectorAll('[data-skill]')].map(d=>d.classList.contains('exp')?2:d.classList.contains('on')?1:0),
+    pips:[...document.querySelectorAll('.pip')].map(px=>px.classList.contains('spent'))};
+}
+function save(){
+  if(!ready)return;
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(()=>{
+    try{
+      localStorage.setItem(KEY,JSON.stringify(collect()));
+      flash("Salvato");
+    }catch(e){flash("Salvataggio non disponibile",true)}
+  },400);
+}
+function apply(st){
+  A=st.arch||A; archSel.value=A;
+  LVL=st.lvl||LVL; document.getElementById('lvl').textContent=LVL;
+  embSt=st.embSt||embDefault(LVL);
+  speranza=(typeof st.speranza==='number')?st.speranza:33;
+  renderEmblemi(); recalc();                       // ricostruisce emblemi, attacchi, slot, privilegi
+  const els=[...document.querySelectorAll('.page input, .page select, .page textarea')];
+  (st.fields||[]).forEach((val,i)=>{
+    const el=els[i]; if(!el)return;
+    if(el.type==='checkbox')el.checked=val; else el.value=val;
+  });
+  (st.saves||[]).forEach((on,i)=>document.querySelectorAll('[data-save]')[i]?.classList.toggle('on',on));
+  document.querySelectorAll('[data-skill]').forEach((d,i)=>{
+    d.classList.remove('on','exp');
+    const v=(st.skills||[])[i]; if(v===1)d.classList.add('on'); if(v===2)d.classList.add('exp');
+  });
+  (st.pips||[]).forEach((sp,i)=>document.querySelectorAll('.pip')[i]?.classList.toggle('spent',sp));
+  document.querySelectorAll('.vsel,.zsel').forEach(s=>s.dispatchEvent(new Event('change')));
+  bdesc(); paintHope(); recalc();
+}
+function load(){
+  try{
+    const raw=localStorage.getItem(KEY);
+    if(!raw)return false;
+    apply(JSON.parse(raw));
+    return true;
+  }catch(e){return false}
+}
+function reset(){
+  if(!confirm("Cancellare la scheda salvata e ripartire dai valori suggeriti?"))return;
+  try{localStorage.removeItem(KEY)}catch(e){}
+  LVL=12; document.getElementById('lvl').textContent=LVL; speranza=33; paintHope();
+  document.getElementById('pname').value=''; loadArch(); flash("Scheda azzerata");
+}
+function exportJSON(){
+  const name=(document.getElementById('pname').value||A).trim().replace(/[^\w\sÀ-ü-]/g,'').replace(/\s+/g,'-');
+  const blob=new Blob([JSON.stringify(collect(),null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob), link=document.createElement('a');
+  link.href=url; link.download=`${name||'smarrito'}-liv${LVL}.json`; link.click();
+  URL.revokeObjectURL(url);
+}
+function importJSON(input){
+  const f=input.files[0]; if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{
+    try{apply(JSON.parse(r.result)); save(); flash("Scheda caricata")}
+    catch(e){flash("File non valido",true)}
+    input.value='';
+  };
+  r.readAsText(f);
+}
+function flash(msg,warn){
+  const t=document.getElementById('flash');
+  t.textContent=msg; t.style.background=warn?'#8a2f2a':'#4E6B3C';
+  t.classList.add('show'); clearTimeout(flash.t);
+  flash.t=setTimeout(()=>t.classList.remove('show'),1400);
+}
+/* ogni modifica salva */
+document.querySelector('.page').addEventListener('input',save);
+document.querySelector('.page').addEventListener('change',save);
+document.querySelector('.page').addEventListener('click',e=>{
+  if(e.target.closest('.dot, .pt, .lvl-ctrl button'))save();
+});
+window.addEventListener('beforeunload',()=>{
+  if(ready){try{localStorage.setItem(KEY,JSON.stringify(collect()))}catch(e){}}
+});
+
+/* init */
+paintHope();bdesc();loadArch();
+if(!load()) flash("Nuova scheda");
+ready=true;
+</script>
+</body>
+</html>
